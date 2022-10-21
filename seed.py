@@ -18,6 +18,7 @@ whiskey = Pet(
     age = 'adult',
 )
 
+
 # Add new users to session
 db.session.add(whiskey)
 

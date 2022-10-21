@@ -32,6 +32,7 @@ class Pet(db.Model):
     )
     species = db.Column(
         db.String(50),
+        db.CheckConstraint("species IN ('cat','dog','porcupine')"),
         nullable=False,
     )
     photo_url = db.Column(
@@ -41,9 +42,7 @@ class Pet(db.Model):
     )
     age = db.Column(
         db.String(20),
-        # db.CheckConstraint('{"baby", "young", "adult", "senior"}'),
-        # db.Column.in_(['baby','young','adult','senior']),
-        # TODO: add in set constraint
+        db.CheckConstraint("age IN ('baby','young','adult','senior')"),
         nullable=False,
     )
     notes = db.Column(

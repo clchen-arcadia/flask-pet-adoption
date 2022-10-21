@@ -31,8 +31,6 @@ def display_home_page():
 
     pets = Pet.query.all()
 
-    #print('--------tEST-------', pets, pets[0], type(pets), type(pets[0]))
-
     return render_template(
         'home.html',
         pets=pets
@@ -66,6 +64,6 @@ def add_new_pet():
         db.session.add(new_pet)
         db.session.commit()
         return redirect("/")
-    
+
     else:
         return render_template("pet_add_form.html", form=form)
