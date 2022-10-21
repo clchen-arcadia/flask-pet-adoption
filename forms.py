@@ -1,6 +1,6 @@
 from random import choices
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField, SelectField
+from wtforms import StringField, FloatField, SelectField, BooleanField
 from wtforms.validators import InputRequired, Optional, URL, AnyOf
 
 
@@ -23,3 +23,12 @@ class AddPetForm(FlaskForm):
                           ('senior', 'Senior')
                       ])
     notes = StringField("Notes")
+
+class EditPetForm(FlaskForm):
+    """
+        Form to edit a given pets' info.
+    """
+
+    photo_url = StringField("Photo URL", validators=[Optional(), URL()])
+    notes = StringField("Notes")
+    available = BooleanField("Available?")
