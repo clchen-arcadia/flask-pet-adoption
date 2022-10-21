@@ -1,6 +1,7 @@
 from random import choices
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField, SelectField, BooleanField
+#TODO: Ask: what is good practice for cleaning up from import lines?
+from wtforms import StringField, FloatField, SelectField, BooleanField, TextAreaField
 from wtforms.validators import InputRequired, Optional, URL, AnyOf
 
 
@@ -22,7 +23,7 @@ class AddPetForm(FlaskForm):
                           ('adult', 'Adult'),
                           ('senior', 'Senior')
                       ])
-    notes = StringField("Notes")
+    notes = TextAreaField("Notes")
 
 class EditPetForm(FlaskForm):
     """
@@ -30,5 +31,5 @@ class EditPetForm(FlaskForm):
     """
 
     photo_url = StringField("Photo URL", validators=[Optional(), URL()])
-    notes = StringField("Notes")
+    notes = TextAreaField("Notes")
     available = BooleanField("Available?")

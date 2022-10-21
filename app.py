@@ -83,8 +83,14 @@ def display_pet_info(pet_id_number):
 
     if form.validate_on_submit():
         #do stuff here
-        return print("we're not done yet")
-    
+
+        pet.photo_url = form.photo_url.data
+        pet.notes = form.notes.data
+        pet.available = form.available.data
+
+        db.session.commit()
+
+        return redirect(f'/{pet.id}')
+
     else:
         return render_template("pet_display_info.html", pet=pet, form=form)
-        

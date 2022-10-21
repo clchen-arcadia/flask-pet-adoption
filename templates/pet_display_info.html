@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p><b>{{ pet.name }}</b></p>
+<h1>{{ pet.name }}</h1>
 <img src="{{ pet.photo_url }}">
 <p>Age: {{ pet.age }}</p>
 <p>Species: {{ pet.species }}</p>
@@ -25,4 +25,5 @@
 
     <button type="submit">Submit</button>
 </form>
+<a href="/"><button>Back</button></a>
 {% endblock %}
