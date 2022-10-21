@@ -69,7 +69,7 @@ def add_new_pet():
         return render_template("pet_add_form.html", form=form)
 
 @app.route("/<int:pet_id_number>", methods = ['GET','POST'])
-def display_pet_info(pet_id_number):
+def edit_pet_info(pet_id_number):
     """
         Render info page about given pet, and allow information updating.
     """
@@ -82,8 +82,6 @@ def display_pet_info(pet_id_number):
     )
 
     if form.validate_on_submit():
-        #do stuff here
-
         pet.photo_url = form.photo_url.data
         pet.notes = form.notes.data
         pet.available = form.available.data

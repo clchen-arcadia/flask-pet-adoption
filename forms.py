@@ -1,4 +1,3 @@
-from random import choices
 from flask_wtf import FlaskForm
 #TODO: Ask: what is good practice for cleaning up from import lines?
 from wtforms import StringField, FloatField, SelectField, BooleanField, TextAreaField

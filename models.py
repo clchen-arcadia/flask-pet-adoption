@@ -6,8 +6,8 @@ db = SQLAlchemy()
 
 
 def connect_db(app):
-    """Connect this database to provided Flask app.
-
+    """
+    Connect this database to provided Flask app.
     You should call this in your Flask app.
     """
 
@@ -32,7 +32,7 @@ class Pet(db.Model):
     )
     species = db.Column(
         db.String(50),
-        db.CheckConstraint("species IN ('cat','dog','porcupine')"),
+        db.CheckConstraint("species IN ('cat','dog','porcupine')"), #make global string?
         nullable=False,
     )
     photo_url = db.Column(
