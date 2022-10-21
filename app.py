@@ -1,10 +1,10 @@
 """Flask app for adopt app."""
 
-from flask import Flask
+from flask import Flask, render_template, redirect
 
 from flask_debugtoolbar import DebugToolbarExtension
 
-from models import db, connect_db
+from models import db, connect_db, Pet
 
 app = Flask(__name__)
 
@@ -22,3 +22,17 @@ db.create_all()
 # app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 toolbar = DebugToolbarExtension(app)
+
+
+@app.get("/")
+def display_home_page():
+    """Presents the home page to the user"""
+
+    pets = Pet.query.all()
+
+    print('--------tEST-------', pets, pets[0], type(pets), type(pets[0]))
+
+    return render_template(
+        'home.html',
+        pets=pets
+    )
