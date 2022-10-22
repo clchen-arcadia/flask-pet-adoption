@@ -29,7 +29,7 @@ toolbar = DebugToolbarExtension(app)
 def display_home_page():
     """Presents the home page to the user"""
 
-    pets = Pet.query.all()
+    pets = Pet.query.all()#TODO order by!
 
     return render_template(
         'home.html',
@@ -41,6 +41,11 @@ def add_new_pet():
     """
         Either displays form to add a new pet, or submits the information
         and redirects to the homepage.
+
+        TODO: reformat docstring:
+        if GET then... show form
+
+        if POST then...check valid then change db
     """
 
     form = AddPetForm()
@@ -72,13 +77,15 @@ def add_new_pet():
 def edit_pet_info(pet_id_number):
     """
         Render info page about given pet, and allow information updating.
+
+        TODO: same here!
     """
 
     pet = Pet.query.get_or_404(pet_id_number)
     form = EditPetForm(
         photo_url = pet.photo_url,
         available = pet.available,
-        notes = pet.notes
+        notes = pet.notes #obj = pet here will do the same thing!! NOTE
     )
 
     if form.validate_on_submit():
@@ -91,4 +98,8 @@ def edit_pet_info(pet_id_number):
         return redirect(f'/{pet.id}')
 
     else:
-        return render_template("pet_display_info.html", pet=pet, form=form)
+        return render_template(
+            "pet_display_info.html", #rename html TODO
+            pet=pet,
+            form=form
+        )

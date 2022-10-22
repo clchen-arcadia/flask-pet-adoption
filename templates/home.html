@@ -6,24 +6,24 @@
 
 <ul>
 
-{% for pet in pets %}
-<li>
-<img src="{{ pet.photo_url }}">
-<br>
-<p>
-  <b>{{ pet.name }}</b> is
+  {% for pet in pets %}
+  <li>
+    <img src="{{ pet.photo_url }}">
+    <br>
+    <p>
+      <b>{{ pet.name }}</b> is
 
-  {% if pet.available %}
-  available!
+      {% if pet.available %}
+      available!
 
-  {% else %}
-  not available :(
+      {% else %}
+      not available :(
 
-  {% endif %}
-</p>
-<a href="/{{pet.id}}"><button>Read about me!</button></a>
-</li>
-{% endfor %}
+      {% endif %}
+    </p>
+    <a href="/{{pet.id}}"><button>Read about me!</button></a>
+  </li>
+  {% endfor %}
 
 </ul>
 

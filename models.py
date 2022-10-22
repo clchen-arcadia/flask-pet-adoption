@@ -15,6 +15,12 @@ def connect_db(app):
     db.app = app
     db.init_app(app)
 
+    #ALLOWED_SPECIES = '(
+    #
+    # )'
+
+    #f"species IN {ALLOWED_SPECIES}"
+
 
 class Pet(db.Model):
     """Pet records for adoption agency"""
@@ -48,7 +54,7 @@ class Pet(db.Model):
     notes = db.Column(
         db.String(1000),
         nullable=True
-    )
+    )#TODO: nullable=False advisable. default=''
     available = db.Column(
         db.Boolean,
         nullable=False,

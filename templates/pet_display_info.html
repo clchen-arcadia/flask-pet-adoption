@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <h1>{{ pet.name }}</h1>
+<!-- Consider wrapping this with an if! avoid a broken image icon! TODO:-->
 <img src="{{ pet.photo_url }}">
+<!-- also add alt text for accessibility(for screen readers) -->
+
+
 <p>Age: {{ pet.age }}</p>
 <p>Species: {{ pet.species }}</p>
 
@@ -11,16 +16,16 @@
     {{ form.hidden_tag() }}
 
     {% for field in form
-           if field.widget.input_type != 'hidden' %}
+    if field.widget.input_type != 'hidden' %}
 
-        <p>
-            {{ field.label }}
-            {{ field }}
+    <p>
+        {{ field.label }}
+        {{ field }}
 
-            {% for error in field.errors %}
-                {{ error }}
-            {% endfor %}
-        </p>
+        {% for error in field.errors %}
+        {{ error }}
+        {% endfor %}
+    </p>
     {% endfor %}
 
     <button type="submit">Submit</button>
